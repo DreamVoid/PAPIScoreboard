@@ -92,7 +92,7 @@ public class PAPIScoreboards extends JavaPlugin implements Listener {
                 scoreboardDataMap = Maps.newHashMap(); // Initialise the map
                 untranslated = getConfig().getStringList("scoreboard.lines"); // initialise the variables from the config
                 title = getConfig().getString("scoreboard.title"); // same as above
-                commandSender.sendMessage(ChatColor.GREEN + "计分板已重新载入 (用时" + (((double)System.currentTimeMillis() - now) / 1000) + "秒");
+                commandSender.sendMessage(ChatColor.GREEN + "Reloaded config in " + (((double)System.currentTimeMillis() - now) / 1000) + "s");
                 return false;
             }
         });

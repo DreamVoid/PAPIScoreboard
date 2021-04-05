@@ -1,10 +1,16 @@
 name: PAPIScoreboard
 main: com.sandeep.papiscoreboards.PAPIScoreboards
 <<<<<<< HEAD
+<<<<<<< HEAD
 author: Sunny#4704, MineBlock Team.
 description: A MineBlock Scoreboard Spigot Plugin.
 version: 1.0
 softdepend: [PlaceholderAPI]
+=======
+author: Sunny#4704
+description: Scoreboard plugin that minimises refreshes and uses PAPI
+version: TEST4
+>>>>>>> parent of 37aad12 (Update plugin.yml)
 =======
 author: Sunny#4704
 description: Scoreboard plugin that minimises refreshes and uses PAPI

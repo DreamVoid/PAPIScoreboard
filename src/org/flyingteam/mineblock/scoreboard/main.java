@@ -1,4 +1,4 @@
-package com.sandeep.papiscoreboards;
+package org.flyingteam.mineblock.scoreboard;
 
 import com.google.common.collect.Maps;
 import me.clip.placeholderapi.PlaceholderAPI;
@@ -23,12 +23,12 @@ import java.util.stream.Collectors;
 
 // Imports here
 
-public class PAPIScoreboards extends JavaPlugin implements Listener {
+public class main extends JavaPlugin implements Listener {
 
     private static List<UUID> toggledOff;
 
     // Map I made to store the scoreboard data in case I need to refresh it/update it
-    private static Map<UUID, ScoreboardData> scoreboardDataMap;
+    private static Map<UUID, utils> scoreboardDataMap;
     private final static String specialKey = "Oa4AuHRaOn";
 
     private int currentIndex; // Holding the iteration of players
@@ -78,7 +78,7 @@ public class PAPIScoreboards extends JavaPlugin implements Listener {
                 return;
             }
             // Enter the player into the map
-            scoreboardDataMap.put(player.getUniqueId(), new ScoreboardData(player.getUniqueId(), PAPIScoreboards.this.runTask(player)));
+            scoreboardDataMap.put(player.getUniqueId(), new utils(player.getUniqueId(), main.this.runTask(player)));
 
             currentIndex++; // Increase index
 
@@ -113,10 +113,10 @@ public class PAPIScoreboards extends JavaPlugin implements Listener {
         }
 
         if (scoreboardDataMap.containsKey(player.getUniqueId())) { // If the player has been updated before... (in the map)
-            ScoreboardData scoreboardData = scoreboardDataMap.get(player.getUniqueId());// Get their scoreboard data (from map)
-            if (scoreboardData.canUpdate(data.toString())) { // check if we can update their scoreboard?
-//                showBoard(player, translated);// if we can then resetBoard
-                nfShowBoard(player, data.toString(), scoreboardData.getData());
+            utils utils = scoreboardDataMap.get(player.getUniqueId());// Get their scoreboard data (from map)
+            if (utils.canUpdate(data.toString())) { // check if we can update their scoreboard?
+                //showBoard(player, translated);// if we can then resetBoard
+                nfShowBoard(player, data.toString(), utils.getData());
             }
         } else {
 //            showBoard(player, translated); // If it is first time then we just show scoreboard
@@ -204,11 +204,11 @@ public class PAPIScoreboards extends JavaPlugin implements Listener {
             showBoard(player, translate(player));
             return;
         }
-        List<String> currentLines = Arrays.stream(oldData.split(specialKey)).map(PAPIScoreboards::mapString).collect(Collectors.toList());
-        List<String> newLines = Arrays.stream(newData.split(specialKey)).map(PAPIScoreboards::mapString).collect(Collectors.toList());
+        List<String> currentLines = Arrays.stream(oldData.split(specialKey)).map(main::mapString).collect(Collectors.toList());
+        List<String> newLines = Arrays.stream(newData.split(specialKey)).map(main::mapString).collect(Collectors.toList());
 
         for (int i = 0; i < currentLines.size(); i++) {
-            if (!ChatColor.stripColor(currentLines.get(i)) .equalsIgnoreCase( ChatColor.stripColor(newLines.get(i)))) {
+            if (!ChatColor.stripColor(currentLines.get(i)) .equalsIgnoreCase( ChatColor.stripColor(newLines.get(i)))) { //移除判断语句以更新所有行
                 int score = objective.getScore(currentLines.get(i)).getScore();
                 objective.getScoreboard().resetScores(currentLines.get(i));
                 objective.getScore(newLines.get(i)).setScore(score);

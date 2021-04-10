@@ -2,8 +2,16 @@ name: MineBlockScoreboard
 main: org.flyingteam.mineblock.scoreboard.main
 author: MineBlock Team.
 description: MineBlock 计分板插件
-version: 1.0
+version: 1.1
 softdepend: [PlaceholderAPI]
+prefix: MineBlockPlugin
+api-version: 1.16
+website: www.mineblock.cc
 commands:
   reloadscoreboard:
-    permission: mineblock.scoreboard.command.reloadscoreboard
+    permission: mineblock.scoreboard.reload
+    description: 重新加载记分板
+permissions:
+  mineblock.scoreboard.reload:
+    default: op
+    description: 允许使用/reloadscoreboard

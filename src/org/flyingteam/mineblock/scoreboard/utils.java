@@ -1,15 +1,15 @@
-package com.sandeep.papiscoreboards;
+package org.flyingteam.mineblock.scoreboard;
 
 import java.util.UUID;
 
-public class ScoreboardData {
+public class utils {
 
     // Basic OOP class that stores String data and UUID of player
     private String data;
 
     private UUID player;
 
-    public ScoreboardData(UUID player, String data) {
+    public utils(UUID player, String data) {
         this.data = data;
         this.player = player;
     }

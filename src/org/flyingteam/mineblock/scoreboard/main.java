@@ -126,11 +126,11 @@ public class main extends JavaPlugin implements Listener {
         return data.toString(); // Return the newData that is on the scoreboard right now
     }
 
-    @EventHandler
+    /*@EventHandler
     public void onDie(PlayerRespawnEvent event) {
         runTask(event.getPlayer());
         showBoard(event.getPlayer(), translate(event.getPlayer()));
-    }
+    }*/
 
     public static void showBoard(Player player, List<String> translated) {
         Scoreboard scoreboard = Bukkit.getScoreboardManager().getNewScoreboard(); // New scoreboard
